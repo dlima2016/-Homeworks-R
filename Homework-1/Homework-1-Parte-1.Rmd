@@ -1,0 +1,28 @@
+  #HOMEWORK 1 
+  #Parte 1
+  #----------------------------------------------------------------------------
+```{r}
+#CREACIÓN DE MATRIZ PRINCIPAL
+peso_personas <- matrix(sample(160:200, 25, replace = TRUE), ncol=5)
+
+meses <- c("Enero", "Febrero", "Marzo", "Abril", "Mayo")
+colnames(peso_personas) <- meses #ASIGNACIÓN DE NOMBRES DE COLUMNAS
+
+nombres <- c("Julia", "Camilo", "Jorge", "Henry", "Stephanie")
+rownames(peso_personas) <- nombres #ASIGNACIÓN DE NOMBRES DE FILA
+
+#CALCULO DE MEDIA DE PESO POR PERSONA Y POR MESES
+rmedia <- rowMeans(peso_personas)
+cmedia <- colMeans(peso_personas)
+cmedia <- c(cmedia, NA) #AJUSTA TAMAÑO DE VECTOR
+MedPersona <- cmedia
+MedMes <- rmedia
+
+peso_personas <- rbind(peso_personas, MedMes)
+peso_personas <- cbind(peso_personas, MedPersona)
+peso_personas
+```
+
+
+
+
