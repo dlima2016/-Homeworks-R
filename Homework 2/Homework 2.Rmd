@@ -1,0 +1,88 @@
+---
+title: "Homework 2"
+subtitle: "Funciones en R y Familia apply"
+author: Diana Paola Gutiérrez Lima - 999012382
+output: html_notebook
+---
+Universidad de San Carlos de Guatemala  
+Facultad de Ingeniería  
+Fundamentos de Programación y Scripting
+
+-
+Funciones en R
+
+  1.
+Estructura de una función: Las funciones estan conformadas por 3 partes, las entradas, el cuerpo y la salida. La entrada es el parámetro o parámetros que tendrá para realizar la operación deseada. El cuerpo es donde se desarrolla la operación, puede iterar una o varias veces dependiendo de las condiciones y de las entradas que se tengan. Y la salida será el resultado de la operación realizada y será la única respuesta de la función, también se puede crear para que muestre texto o algún otro dato, como el dato de entrada y valores de las iteraciones.  
+Para crear una función se de utilizar la palabra reservada "function()" dentro de los paréntesis se coloca la cantidad de argumentos que se necesitaran como entrada de la operación:  
+```{r echo=TRUE}
+ function_name <- function(arg1, arg2,... , argn){  
+  function_body  
+  function_body  
+  ...  
+  function_body  
+  return(function_output)
+  }
+```
+-
+  2.
+Ejemplo de una función
+
+```{r ejemplo1, echo=TRUE}
+    mi_funcion <- function(edad){
+     if(edad >= 18){
+      print("¡Ya eres mayor de edad!")
+      }else{
+      print(paste("Aún eres menor de edad, en",18-edad, "años serás mayor de edad."))
+      }
+    }
+    mi_funcion(15)
+```
+-  
+    3. 
+  Argumentos de una función: dependiendo de lo que se desee realizar en la función se coloca el tipo de argumento que se utilizará como entrada o como operandos de la función. En el ejemplo desarrollado anteriormente se coloca un número entero, pero pueden colocarse strings, vectores, arreglos o data frames. 
+  
+-
+  4. 
+  Argumentos por valor: como se menciona en el inciso anterior, existen diferentes tipos de argumentos para crear una función, dependiendo de cómo se maneje la variable será el tipo que la función asumirá. Tambiés se pueden utilizar 2 diferentes tipos de modo de variables, globales y locales. Las variables globales serán las que estén definidas antes de crear la función y las locales serán las que unicamente serán reconocidas dentro de la función descrita. 
+```{r}
+w= 38 #es una variable global
+
+my_2function <- function(x){ # x es una variable local y es la que se utiliza como argumento
+  while(w>x){
+    w <- w-5
+    print(w)
+  }
+    print("x ya es menor a w")
+}
+my_2function(30)
+```
+-
+Familia apply:  
+Es una función de R que pretende sustituir la función loop, es decir, se utiliza para redundancias en un conjunto de objetos. Se puede utilizar con objetivos de tipo numérico, matrices, y arreglos. 
+  1. 
+lapply: función que permite trabajar con listas, la ventaja de ésta función es que el resultado será de la misma longitud que la lista de entrada. Los tipos de datos con los que puede trabajar son: listas, vectores y data frames. Para poder utilizarse se necesitan al menos 2 parámetros, la lista a utilizar y la función que se quiere aplicar a cada elemento de la lista: 
+```{r}
+
+nombres <- c("Diana", "Henry", "Rosario")
+lapply(nombres, toupper)
+
+```
+-
+  2. 
+sapply: ésta función realiza la misma operación que lapply con la diferencia de devolver el mismo tipo de entrada, como salida. Es decir, si se ingresa un vector, obtendrá como salida un vector. En el siguiente ejemplo se puede observar que imprime la entrada y la salida, ambos como vectores. 
+
+```{r}
+nombres <- c("Diana", "Henry", "Rosario")
+sapply(nombres, toupper)
+```
+-
+  3. 
+vapply: permite indicar el tipo de dato que se obtendrá en la salida, dado que en el ejemplo se utilizará una función que trabaja con caracteres se colocará de tipo caracter. Es una versión menos eficiente de sapply, ya que se debe utilizar el tipo de dato que se usa en la función. 
+
+```{r}
+nombres <- c("Diana", "Henry", "Rosario")
+vapply(nombres, toupper, character(1))
+```
+
+    
+    
