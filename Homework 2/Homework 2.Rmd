@@ -84,5 +84,13 @@ nombres <- c("Diana", "Henry", "Rosario")
 vapply(nombres, toupper, character(1))
 ```
 
+-
+  Referencias:  
+  *
+    Daniel Jhonson, (21 de enero de 2023). Guru99. "apply(), lapply(), sapply(), tapply() Function in R with Examples." https://www.guru99.com/r-apply-sapply-tapply.html  
+    
+  *
+    
+
     
     
